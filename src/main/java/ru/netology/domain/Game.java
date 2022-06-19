@@ -1,15 +1,15 @@
 package ru.netology.domain;
 
-
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class Game {
-    Collection<Player> players = new ArrayList<>();
 
-    public void register(Player newPlayer) {
-        players.add(newPlayer);
+    Map<Integer, Player> players = new HashMap<>();
+
+    public void register(Player player) {
+        players.put(player.getId(), player);
     }
 
     public int round(String playerName1, String playerName2) {
@@ -36,7 +36,7 @@ public class Game {
     }
 
     public Player findByName(String playerName) {
-        for (Player player : players) {
+        for (Player player : players.values()) {
             if (player.getName().equals(playerName)) {
                 return player;
             }
